@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#060914">
+<title>Spinfinity</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="cv"></canvas>
+<div id="hud"></div>
+<button id="x" aria-label="Sair da partida">✕</button>
+<div id="msg"></div>
+
+<div class="scr on" id="menu">
+  <div class="box">
+    <h1>Spinfinity</h1>
+    <p class="sub">Arena de batalha · PC, celular e tablet</p>
+    <button class="btn b" onclick="show('local')">Modo Local</button>
+    <button class="btn r" onclick="show('online')">Modo Online</button>
+    <small>Empurre os outros para fora da arena. No PC: teclas WASD ou setas. No celular/tablet: arraste o dedo em qualquer lugar da tela para guiar seu beyblade. Quem fizer 3 pontos vence.</small>
+  </div>
+</div>
+
+<div class="scr" id="local">
+  <div class="box">
+    <h2>Quantas pessoas vão jogar?</h2>
+    <div class="grid4">
+      <button class="btn" onclick="startLocal(1)">1</button><button class="btn" onclick="startLocal(2)">2</button>
+      <button class="btn" onclick="startLocal(3)">3</button><button class="btn" onclick="startLocal(4)">4</button>
+    </div>
+    <small>Com 1 pessoa você enfrenta um robô. No toque, cada jogador arrasta o dedo no seu lado da tela (Azul em cima, Vermelho embaixo, Verde à direita, Amarelo à esquerda). No PC: Azul WASD, Vermelho setas, Verde IJKL, Amarelo TFGH.</small>
+    <button class="btn ghost" onclick="show('menu')">Voltar</button>
+  </div>
+</div>
+
+<div class="scr" id="online">
+  <div class="box">
+    <h2>Modo Online</h2>
+    <small>De 1 a 4 jogadores, em qualquer aparelho: um no PC, outro no celular, outro no tablet.</small>
+    <button class="btn g" onclick="createRoom()">Criar sala</button>
+    <div class="or">ou entre com um código</div>
+    <input id="code" maxlength="4" placeholder="ABCD" autocomplete="off" autocapitalize="characters">
+    <button class="btn b" onclick="joinRoom()">Entrar na sala</button>
+    <button class="btn ghost" onclick="leave()">Voltar</button>
+  </div>
+</div>
+
+<div class="scr" id="lobby">
+  <div class="box">
+    <h2>Código da sala</h2>
+    <div class="code" id="rc">----</div>
+    <div id="slots"></div>
+    <small id="rh"></small>
+    <button class="btn b" id="rl" onclick="shareLink()">Copiar link da sala</button>
+    <button class="btn g" id="rs" onclick="startOnline()">Iniciar partida</button>
+    <button class="btn ghost" onclick="leave()">Sair</button>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/peerjs/1.5.4/peerjs.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
